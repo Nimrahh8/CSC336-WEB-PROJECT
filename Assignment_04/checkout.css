@@ -1,0 +1,167 @@
+/* ==============================
+   GLOBAL
+============================== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f6fa;
+}
+
+/* ==============================
+   MENU SECTION
+============================== */
+#menu-section {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(204, 43, 125, 0.1);
+}
+
+#menu-section h3 {
+  color: #cc2b7d;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* Menu Cards */
+.menu-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(204, 43, 125, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  background: #fff;
+}
+
+.menu-card img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  padding: 10px;
+  background: #f5f6fa;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(204, 43, 125, 0.3);
+}
+
+.menu-card .card-title {
+  color: #cc2b7d;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.menu-card .card-text {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.menu-card .form-check-input:checked {
+  background-color: #cc2b7d !important;
+  border-color: #cc2b7d !important;
+}
+
+#toCheckout {
+  width: 220px;
+  display: block;
+  margin: 30px auto 0;
+  background-color: #cc2b7d;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+#toCheckout:hover {
+  background-color: #a02060;
+}
+
+/* ==============================
+   CHECKOUT CARD
+============================== */
+.checkout-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(204, 43, 125, 0.15);
+  margin-bottom: 30px;
+}
+
+.checkout-title {
+  color: #cc2b7d !important;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Form Focus */
+.form-control:focus, .form-select:focus {
+  border-color: #cc2b7d !important;
+  box-shadow: 0 0 5px rgba(204,43,125,0.5) !important;
+}
+
+.form-check-input:checked {
+  background-color: #cc2b7d !important;
+  border-color: #cc2b7d !important;
+}
+
+/* Buttons */
+.btn-primary, #placeOrder {
+  background-color: #cc2b7d !important;
+  border: none !important;
+  font-weight: 700;
+  color: #fff !important;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover, #placeOrder:hover {
+  background-color: #a02060 !important;
+}
+
+/* ==============================
+   ORDER SUMMARY
+============================== */
+.order-summary {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(204, 43, 125, 0.1);
+}
+
+.order-summary h5 {
+  color: #cc2b7d !important;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.order-summary .list-group-item {
+  border: none;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-group .btn-outline-secondary {
+  border-color: #cc2b7d !important;
+  color: #cc2b7d !important;
+  transition: all 0.3s;
+}
+
+.input-group .btn-outline-secondary:hover {
+  background-color: #cc2b7d !important;
+  color: #fff !important;
+}
+
+/* Sticky Summary */
+.sticky-summary {
+  position: sticky;
+  top: 20px;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  #menu-section .col-md-3 {
+    margin-bottom: 20px;
+  }
+}

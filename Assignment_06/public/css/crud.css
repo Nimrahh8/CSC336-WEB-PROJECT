@@ -1,0 +1,133 @@
+/* ==============================
+   CRUD PAGE STYLES
+============================== */
+
+/* Global */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f5f6fa;
+  color: #333;
+}
+
+.container {
+  max-width: 900px;
+}
+
+/* Heading */
+h1 {
+  font-weight: 900;
+  color: #cc2b7d;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Card Form */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.card-body {
+  padding: 30px;
+}
+
+/* Form Fields */
+#postForm input,
+#postForm textarea {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+#postForm input:focus,
+#postForm textarea:focus {
+  border-color: #cc2b7d;
+  box-shadow: 0 0 5px rgba(204,43,125,0.3);
+}
+
+#saveBtn {
+  background: #cc2b7d;
+  border: none;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+#saveBtn:hover {
+  background: #a62161;
+}
+
+#cancelBtn {
+  background: #777;
+  border: none;
+  font-weight: 500;
+}
+
+#cancelBtn:hover {
+  background: #555;
+}
+
+/* Loading Spinner */
+#loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 500;
+  color: #cc2b7d;
+}
+
+/* Posts Table */
+.table {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.table th {
+  background: #cc2b7d !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.editBtn, .deleteBtn {
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.editBtn {
+  background: #3a7bd5;
+  color: #fff;
+  border: none;
+}
+
+.editBtn:hover {
+  background: #2a5fa0;
+}
+
+.deleteBtn {
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+}
+
+.deleteBtn:hover {
+  background: #cc0000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table, .card-body {
+    font-size: 0.9rem;
+  }
+
+  #saveBtn, #cancelBtn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/checkout.css">
+</head>
+<body>
+  <div class="container my-5">
+    <!-- Progress Header -->
+    <nav aria-label="progress">
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">Cart</li>
+        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        <li class="breadcrumb-item">Payment</li>
+        <li class="breadcrumb-item">Review</li>
+      </ol>
+    </nav>
+
+    <!-- Filter Section -->
+    <div class="mb-4">
+      <form class="row g-3" method="GET" action="/checkout">
+        <div class="col-md-4">
+          <label for="category" class="form-label">Category</label>
+          <select name="category" id="category" class="form-select">
+            <option value="">All</option>
+            <option value="Drinks" <%= category==='Drinks' ? 'selected' : '' %>>Drinks</option>
+            <option value="Snacks" <%= category==='Snacks' ? 'selected' : '' %>>Snacks</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="minPrice" class="form-label">Min Price</label>
+          <input type="number" name="minPrice" id="minPrice" class="form-control" value="<%= minPrice %>">
+        </div>
+        <div class="col-md-3">
+          <label for="maxPrice" class="form-label">Max Price</label>
+          <input type="number" name="maxPrice" id="maxPrice" class="form-control" value="<%= maxPrice %>">
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-secondary w-100" type="submit">Filter</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Menu Section -->
+    <div id="menu-section" class="mb-5">
+      <h3 class="mb-4">Select Items to Order</h3>
+      <div class="row g-3">
+        <% drinks.forEach(drink => { %>
+          <div class="col-6 col-md-3">
+            <div class="card text-center">
+              <img src="/images/<%= drink.image %>" class="card-img-top" alt="<%= drink.name %>">
+              <div class="card-body">
+                <h5 class="card-title"><%= drink.name %></h5>
+                <p class="card-text">$<%= drink.price %></p>
+                <div class="form-check">
+                  <input class="form-check-input menu-checkbox" type="checkbox" 
+                         id="drink<%= drink._id %>" 
+                         data-name="<%= drink.name %>" 
+                         data-price="<%= drink.price %>">
+                  <label class="form-check-label" for="drink<%= drink._id %>">Add</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- Pagination -->
+      <nav aria-label="Page navigation" class="mt-3">
+        <ul class="pagination justify-content-center">
+          <% for(let i = 1; i <= pages; i++) { %>
+            <li class="page-item <%= i === page ? 'active' : '' %>">
+              <a class="page-link" href="/checkout?page=<%= i %>&limit=10&category=<%= category %>&minPrice=<%= minPrice %>&maxPrice=<%= maxPrice %>"><%= i %></a>
+            </li>
+          <% } %>
+        </ul>
+      </nav>
+
+      <button class="btn btn-primary mt-3" id="toCheckout">Next: Checkout</button>
+    </div>
+
+    <!-- Checkout Section -->
+    <div id="checkout-section" style="display:none;">
+      <div class="row g-3">
+        <!-- Form Column -->
+        <div class="col-12 col-md-7">
+          <!-- Customer & Shipping Form -->
+          <div class="card p-3 mb-3">
+            <h5>Customer & Shipping</h5>
+            <form id="customerForm">
+              <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" id="email">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Address</label>
+                <input type="text" class="form-control" id="address">
+              </div>
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">City</label>
+                  <input type="text" class="form-control" id="city">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Postal Code</label>
+                  <input type="text" class="form-control" id="postal">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Country</label>
+                <select class="form-select" id="country">
+                  <option value="">Choose...</option>
+                  <option>USA</option>
+                  <option>UK</option>
+                  <option>Spain</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="billingSame">
+                <label class="form-check-label" for="billingSame">Billing same as shipping</label>
+              </div>
+            </form>
+          </div>
+
+          <!-- Payment Section -->
+          <div class="card p-3 mb-3">
+            <h5>Payment</h5>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="payment" id="card" checked>
+              <label class="form-check-label" for="card">Card</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="payment" id="cod">
+              <label class="form-check-label" for="cod">Cash on Delivery</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="payment" id="wallet">
+              <label class="form-check-label" for="wallet">Wallet</label>
+            </div>
+            <div id="cardDetails" class="mt-3">
+              <div class="mb-3">
+                <label class="form-label">Cardholder Name</label>
+                <input type="text" class="form-control" id="cardName" placeholder="John Doe">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Card Number</label>
+                <input type="text" class="form-control" id="cardNumber" placeholder="xxxx-xxxx-xxxx-xxxx">
+              </div>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Expiry</label>
+                  <input type="text" class="form-control" id="expiry" placeholder="MM/YY">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">CVV</label>
+                  <input type="text" class="form-control" id="cvv" placeholder="123">
+                </div>
+              </div>
+            </div>
+            <div class="form-check my-3">
+              <input class="form-check-input" type="checkbox" id="terms">
+              <label class="form-check-label" for="terms">I agree to terms & conditions</label>
+            </div>
+            <button class="btn btn-primary w-100" id="placeOrder" disabled>Place Order</button>
+          </div>
+        </div>
+
+        <!-- Order Summary Column -->
+        <div class="col-12 col-md-5">
+          <div class="card p-3 sticky-summary">
+            <h5>Order Summary</h5>
+            <ul class="list-group mb-3" id="orderSummaryList"></ul>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Coupon code">
+              <button class="btn btn-outline-secondary">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/validation.js"></script>
+</body>
+</html>
