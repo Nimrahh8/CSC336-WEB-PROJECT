@@ -1,0 +1,29 @@
+<h2>Order Successful!</h2>
+<p>Thank you, <%= order.customer.fullName %>! Your order has been placed.</p>
+
+<h3>Order Summary</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% order.items.forEach(item => { %>
+        <tr>
+            <td><%= item.product %></td>
+            <td>$<%= item.price.toFixed(2) %></td>
+            <td><%= item.quantity %></td>
+            <td>$<%= (item.price * item.quantity).toFixed(2) %></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+<p>Subtotal: $<%= order.subtotal.toFixed(2) %></p>
+<p>Discount: $<%= (order.subtotal * order.discount).toFixed(2) %></p>
+<p>Total: $<%= order.total.toFixed(2) %></p>
+
+<a href="/checkout" class="btn btn-primary">Back to Shopping</a>

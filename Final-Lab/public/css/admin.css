@@ -1,0 +1,360 @@
+/* ==================================================
+   ADMIN PANEL – DISCO THEME
+   Matches Website (#cc2b7d)
+================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f5f6fa;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* ==================================================
+   ADMIN LOGIN
+================================================== */
+
+.admin-login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #d0f0ff, #a7e1ff, #8cd3ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-login-card {
+  background: #fff;
+  width: 380px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(204, 43, 125, 0.25);
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.admin-login-card h2 {
+  text-align: center;
+  color: #cc2b7d;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.admin-login-card label {
+  font-weight: 600;
+}
+
+.admin-login-card .form-control {
+  border-radius: 12px;
+  padding: 12px 15px;
+  border: 2px solid #eee;
+}
+
+.admin-login-card .form-control:focus {
+  border-color: #cc2b7d;
+  box-shadow: 0 0 6px rgba(204,43,125,0.4);
+}
+
+.admin-login-card button {
+  width: 100%;
+  margin-top: 15px;
+  background: #cc2b7d;
+  border: none;
+  border-radius: 30px;
+  padding: 12px;
+  font-weight: 700;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.admin-login-card button:hover {
+  background: #a02060;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(204,43,125,0.4);
+}
+
+/* ==================================================
+   SIDEBAR
+================================================== */
+
+.admin-sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #eee;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  padding: 25px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: #cc2b7d;
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar-nav {
+  padding: 20px 0;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 12px 25px;
+  color: #777;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  margin: 5px 15px;
+  transition: 0.3s;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background: #cc2b7d;
+  color: #fff;
+}
+
+/* ==================================================
+   MAIN CONTENT
+================================================== */
+
+.admin-main {
+  margin-left: 260px;
+  min-height: 100vh;
+}
+
+.admin-topbar {
+  background: #fff;
+  padding: 18px 30px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-content {
+  padding: 30px;
+}
+
+/* ==================================================
+   STAT CARDS
+================================================== */
+
+.stat-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 4px 25px rgba(204,43,125,0.12);
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(204,43,125,0.25);
+}
+
+.stat-card h3 {
+  color: #cc2b7d;
+  font-weight: 800;
+}
+
+.stat-card p {
+  font-weight: 600;
+}
+
+/* ==================================================
+   CARDS
+================================================== */
+
+.card {
+  border-radius: 18px;
+  border: none;
+  box-shadow: 0 4px 25px rgba(204,43,125,0.12);
+}
+
+.card-header {
+  background: #fff;
+  border-bottom: 2px solid #f1f1f1;
+  font-weight: 700;
+  color: #cc2b7d;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+/* ==================================================
+   TABLES
+================================================== */
+
+.table thead th {
+  background: #f5f6fa;
+  color: #cc2b7d;
+  font-weight: 700;
+}
+
+.table tbody tr:hover {
+  background: rgba(204,43,125,0.05);
+}
+
+/* ==================================================
+   FORMS
+================================================== */
+
+.form-label {
+  font-weight: 600;
+}
+
+.form-control,
+.form-select {
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 2px solid #eee;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #cc2b7d;
+  box-shadow: 0 0 6px rgba(204,43,125,0.4);
+}
+
+/* ==================================================
+   BUTTONS
+================================================== */
+
+.btn-primary {
+  background: #cc2b7d;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: #a02060;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  border: none;
+  border-radius: 30px;
+}
+
+.btn-danger:hover {
+  background: #c0392b;
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 80px;
+  }
+
+  .admin-main {
+    margin-left: 80px;
+  }
+
+  .sidebar-nav a {
+    text-align: center;
+    padding: 12px;
+  }
+}
+
+/* ===============================
+   ADMIN LOGIN – PREMIUM UPGRADE
+================================ */
+
+.admin-login-page {
+  background:
+    radial-gradient(circle at top, rgba(204,43,125,0.35), transparent 40%),
+    linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-login-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(#ffffff20 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.25;
+}
+
+.admin-login-card {
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(255,255,255,0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.login-header h2 {
+  margin-bottom: 5px;
+}
+
+.login-header p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.login-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #cc2b7d, #ff6fae);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  color: #fff;
+  font-size: 1.6rem;
+  box-shadow: 0 10px 30px rgba(204,43,125,0.6);
+}
+
+.input-group-text {
+  background: #fff;
+  border-radius: 12px 0 0 12px;
+  border: 2px solid #eee;
+  border-right: none;
+  color: #cc2b7d;
+}
+
+.input-group .form-control {
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+}
+
+.input-group .form-control:focus {
+  box-shadow: none;
+}
+
+.login-footer {
+  margin-top: 25px;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.8rem;
+}

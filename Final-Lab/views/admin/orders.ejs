@@ -1,0 +1,42 @@
+<h2>Manage Orders</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% orders.forEach(order => { %>
+        <tr>
+            <td><%= order._id %></td>
+            <td><%= order.customer.fullName %></td>
+            <td>$<%= order.total.toFixed(2) %></td>
+            <td>
+                <% if(order.status === 'Placed') { %>
+                    <span class="badge bg-warning text-dark">Placed</span>
+                <% } else if(order.status === 'Processing') { %>
+                    <span class="badge bg-primary">Processing</span>
+                <% } else { %>
+                    <span class="badge bg-success">Delivered</span>
+                <% } %>
+            </td>
+            <td>
+                <form action="/admin/orders/update/<%= order._id %>" method="POST" style="display:inline;">
+                    <% if(order.status === 'Placed') { %>
+                        <button name="status" value="Processing" class="btn btn-sm btn-warning">Process</button>
+                    <% } else if(order.status === 'Processing') { %>
+                        <button name="status" value="Delivered" class="btn btn-sm btn-success">Deliver</button>
+                    <% } else { %>
+                        <span class="text-muted">Completed</span>
+                    <% } %>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+<h2>My Orders</h2>
+<% if (orders.length === 0) { %>
+    <p>No orders found for this email.</p>
+<% } else { %>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Total</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% orders.forEach(order => { %>
+        <tr>
+            <td><%= order._id %></td>
+            <td><%= order.createdAt.toDateString() %></td>
+            <td>$<%= order.total.toFixed(2) %></td>
+            <td><%= order.status %></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+<% } %>
