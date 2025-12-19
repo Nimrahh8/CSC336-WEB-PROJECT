@@ -1,0 +1,61 @@
+<%- include('partials/header', { activePage: 'crud' }) %>
+
+<div class="container my-5" style="margin-left: 20%;">
+  <h1 class="text-center mb-4">Single Page CRUD App</h1>
+
+  <!-- Form -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <form id="postForm">
+        <input type="hidden" id="postId">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" required>
+        </div>
+        <div class="mb-3">
+          <label for="body" class="form-label">Body</label>
+          <textarea class="form-control" id="body" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="saveBtn">Add Post</button>
+        <button type="button" class="btn btn-secondary" id="cancelBtn" style="display:none;">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div id="loading" class="text-center mb-3" style="display:none;">
+    <div class="spinner-border text-primary" role="status"></div>
+    <span>Loading...</span>
+  </div>
+
+  <!-- Posts Table -->
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="postsTable">
+      <% if (posts && posts.length) { %>
+        <% posts.forEach(post => { %>
+          <tr>
+            <td><%= post.id %></td>
+            <td><%= post.title %></td>
+            <td><%= post.body %></td>
+            <td>
+              <button class="btn btn-sm editBtn" data-id="<%= post.id %>">Edit</button>
+              <button class="btn btn-sm deleteBtn" data-id="<%= post.id %>">Delete</button>
+            </td>
+          </tr>
+        <% }) %>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('partials/footer') %>
+
+<script src="/js/crud.js"></script>

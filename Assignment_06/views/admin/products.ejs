@@ -1,0 +1,28 @@
+<!-- views/admin/products.ejs -->
+<% layout('admin/layout') %>
+<h2>Products</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.forEach(product => { %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.category %></td>
+        <td>$<%= product.price %></td>
+        <td><img src="/images/<%= product.image %>" width="50"></td>
+        <td>
+          <a href="/admin/products/edit/<%= product._id %>" class="btn btn-sm btn-warning">Edit</a>
+          <a href="/admin/products/delete/<%= product._id %>" class="btn btn-sm btn-danger" onclick="return confirm('Delete?')">Delete</a>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

@@ -1,0 +1,23 @@
+<!-- views/admin/editProduct.ejs -->
+<% layout('admin/layout') %>
+<h2>Edit Product</h2>
+<form method="POST" action="/admin/products/edit/<%= product._id %>" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control" value="<%= product.name %>" required>
+  </div>
+  <div class="mb-3">
+    <label>Category</label>
+    <input type="text" name="category" class="form-control" value="<%= product.category %>" required>
+  </div>
+  <div class="mb-3">
+    <label>Price</label>
+    <input type="number" name="price" class="form-control" value="<%= product.price %>" required>
+  </div>
+  <div class="mb-3">
+    <label>Image</label>
+    <input type="file" name="image" class="form-control">
+    <img src="/images/<%= product.image %>" width="100" class="mt-2">
+  </div>
+  <button type="submit" class="btn btn-primary">Update Product</button>
+</form>

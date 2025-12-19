@@ -1,0 +1,70 @@
+<%- include('partials/header', { activePage: 'crud' }) %>
+
+<div class="container my-5" style="margin-left: 20%;">
+  <h1 class="text-center mb-4">Product Management (CRUD)</h1>
+
+  <!-- Filter Form -->
+  <form class="row g-3 mb-4" method="GET" action="/crud">
+    <div class="col-md-3">
+      <label for="category" class="form-label">Category</label>
+      <select name="category" id="category" class="form-select">
+        <option value="">All</option>
+        <option value="Drinks" <%= category==='Drinks' ? 'selected' : '' %>>Drinks</option>
+        <option value="Snacks" <%= category==='Snacks' ? 'selected' : '' %>>Snacks</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label for="minPrice" class="form-label">Min Price (PKR)</label>
+      <input type="number" name="minPrice" id="minPrice" class="form-control" value="<%= minPrice %>">
+    </div>
+    <div class="col-md-3">
+      <label for="maxPrice" class="form-label">Max Price (PKR)</label>
+      <input type="number" name="maxPrice" id="maxPrice" class="form-control" value="<%= maxPrice %>">
+    </div>
+    <div class="col-md-3 d-flex align-items-end">
+      <button class="btn btn-secondary w-100" type="submit">Filter</button>
+    </div>
+  </form>
+
+  <!-- Products Table -->
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price (USD)</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (products && products.length) { %>
+        <% products.forEach(product => { %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.category %></td>
+            <td>$<%= product.price.toFixed(2) %></td>
+            <td><img src="/images/<%= product.image %>" width="50" alt="<%= product.name %>"></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="4" class="text-center">No products found</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation" class="mt-3">
+    <ul class="pagination justify-content-center">
+      <% for(let i = 1; i <= pages; i++) { %>
+        <li class="page-item <%= i === page ? 'active' : '' %>">
+          <a class="page-link" href="/crud?page=<%= i %>&limit=10&category=<%= category %>&minPrice=<%= minPrice %>&maxPrice=<%= maxPrice %>"><%= i %></a>
+        </li>
+      <% } %>
+    </ul>
+  </nav>
+</div>
+
+</body>
+</html>
